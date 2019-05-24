@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MovieGenre;
 use App\Subscriber;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,16 @@ class SubscriberController extends Controller
     public function store(Request $request)
     {
 //        Log::debug($request->all());
+        $genreArray = $request->inputObject;
+
+        foreach (MovieGenre::all() as $genre) {
+            if (!empty($genreArray[$genre])) {
+
+                $SubscriberGenre = MovieGenre::first(['genere' => $genre]);
+                $subscriber = Subscriber::firstOrCreate(['session_id' => $request->sessionId]);
+                $subscriber->movieGenres()->attach($SubscriberGenre->id);
+            }
+        }
 
         return response()->json([
             'activeStatus' => 1

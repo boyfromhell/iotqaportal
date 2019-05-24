@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\MovieGenre;
 use App\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class SubscriberController extends Controller
 {
@@ -39,8 +40,10 @@ class SubscriberController extends Controller
 //        Log::debug($request->all());
         $genreArray = $request->inputObject;
 
+
+
         foreach (MovieGenre::all() as $genre) {
-            if (!empty($genreArray[$genre])) {
+            if (($genreArray[$genre])!=null) {
 
                 $SubscriberGenre = MovieGenre::first(['genere' => $genre]);
                 $subscriber = Subscriber::firstOrCreate(['session_id' => $request->sessionId]);

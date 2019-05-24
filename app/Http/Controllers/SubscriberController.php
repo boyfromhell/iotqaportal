@@ -35,7 +35,7 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Log::debug($request->all());
     }
 
     /**

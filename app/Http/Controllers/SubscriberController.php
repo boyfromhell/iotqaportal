@@ -30,18 +30,22 @@ class SubscriberController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         Log::debug($request->all());
+
+        return response()->json([
+            'activeStatus' => 1
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Subscriber  $subscriber
+     * @param \App\Subscriber $subscriber
      * @return \Illuminate\Http\Response
      */
     public function show(Subscriber $subscriber)
@@ -52,7 +56,7 @@ class SubscriberController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Subscriber  $subscriber
+     * @param \App\Subscriber $subscriber
      * @return \Illuminate\Http\Response
      */
     public function edit(Subscriber $subscriber)
@@ -63,8 +67,8 @@ class SubscriberController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Subscriber  $subscriber
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Subscriber $subscriber
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Subscriber $subscriber)
@@ -75,7 +79,7 @@ class SubscriberController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Subscriber  $subscriber
+     * @param \App\Subscriber $subscriber
      * @return \Illuminate\Http\Response
      */
     public function destroy(Subscriber $subscriber)

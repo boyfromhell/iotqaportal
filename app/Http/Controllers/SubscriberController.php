@@ -35,7 +35,7 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
-        Log::debug($request->all());
+//        Log::debug($request->all());
 
         return response()->json([
             'activeStatus' => 1
@@ -84,6 +84,8 @@ class SubscriberController extends Controller
      */
     public function destroy(Subscriber $subscriber)
     {
-        //
+        return response()->json([
+            'activeStatus' => 1
+        ]);
     }
 }

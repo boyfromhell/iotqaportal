@@ -38,9 +38,10 @@ class SubscriberController extends Controller
     public function store(Request $request)
     {
 //        Log::debug($request->all());
-        $genreArray = $request->inputObject;
+        $genreArray = $request->inputObject->toArray();
 
 
+        Log::debug($genreArray);
 
         foreach (MovieGenre::all() as $genre) {
             if (($genreArray[$genre])!=null) {

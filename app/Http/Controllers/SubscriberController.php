@@ -45,8 +45,11 @@ class SubscriberController extends Controller
         foreach (MovieGenre::all() as $genre) {
             if (($genreArray[$genre])!=null) {
 
+                Log::debug('in');
                 $SubscriberGenre = MovieGenre::first(['genere' => $genre]);
+                Log::debug($SubscriberGenre);
                 $subscriber = Subscriber::firstOrCreate(['session_id' => $request->sessionId]);
+                Log::debug($subscriber);
                 $subscriber->movieGenres()->attach($SubscriberGenre->id);
             }
         }

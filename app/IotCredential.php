@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class IotCredential extends Model
 {
+    public $accessToken;
+    public $refreshToken;
+
+    public function __construct()
+    {
+
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -51,5 +59,15 @@ class IotCredential extends Model
         }
 
         return $res->getStatusCode();
+    }
+
+    public function readAccessToken()
+    {
+
+    }
+
+    public function writeAccessToken()
+    {
+
     }
 }

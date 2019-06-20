@@ -90,7 +90,7 @@ class Device extends Model
         return $res->getStatusCode();
     }
 
-    public static function executeAction($accessToken, $jwtToken, $deviceId, $userId )
+    public static function executeAction($accessToken, $jwtToken, $deviceId, $userId, $action)
     {
 
         $client = new Client();
@@ -104,13 +104,43 @@ class Device extends Model
             'body' => json_encode([
                 "operation" => "deviceControl",
                 "deviceId" => $deviceId,
-                "actionName" => "RGB",
+                "actionName" => $action,
                 "userId" => $userId,
-                "actionParameters" => [
-                    "red" => 10,
-                    "green" => 20,
-                    "blue" => 30,
-                ]
+//                "actionParameters" => []
+            ])
+        ]);
+
+        if ($res->getStatusCode() === 200) {
+            return json_decode($res->getBody(), true);
+        }
+
+        return $res->getStatusCode();
+    }
+
+    public static function createDevice($body = array(), $accessToken, $jwtToken)
+    {
+        $client = new Client();
+        $res = $client->post('https://iot.dialog.lk/developer/api/userdevicecontrol/v1/devices', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken,
+                'X-IoT-JWT' => $jwtToken,
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'body' => json_encode([
+                "deviceDefinitionId" => $body["deviceDefinitionId"],
+                "brand" => $body["brand"],
+                "type" => $body["type"],
+                "model" => $body["model"],
+                "userId" => $body["userId"],
+                "deviceParentId" => $body["deviceParentId"],
+                "macAddress" => $body["macAddress"],
+                "name" => $body["name"],
+                "additionalParams" => $body["additionalParams"],
+                "featured" => $body["featured"],
+                "nonDeletable" => $body["nonDeletable"],
+                "pullInterval" => $body["pullInterval"],
+                "zoneId" => $body["zoneId"],
             ])
         ]);
 

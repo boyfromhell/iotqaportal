@@ -37,7 +37,7 @@ class IotCredentialController extends Controller
         for ($i = 0; $i < 20; $i++) {
             $x = rand(0, 2);
 
-            Log::debug($actions[$x]);
+//            Log::debug($actions[$x]);
             $devices = Device::executeAction($tokens['access_token'], $iotLogin['X-IoT-JWT'], 15077, $iotLogin['data']['userId'], $actions[$x]);
 
 

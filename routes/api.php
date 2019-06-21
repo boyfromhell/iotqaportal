@@ -17,5 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('roller-gate/{command}', 'DeviceController@controlGate');
+
 Route::any('receive', 'SubscriberController@store');
 Route::any('delete', 'SubscriberController@delete');

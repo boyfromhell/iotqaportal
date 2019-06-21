@@ -38,15 +38,15 @@
     <script>
         $(document).ready(function () {
             $('#up').click(function () {
-                toastr.success('Successfully executed Up')
+                sendCommand('u')
             })
 
             $('#down').click(function () {
-                toastr.success('Successfully executed Down')
+                sendCommand('d')
             })
 
             $('#pause').click(function () {
-                toastr.success('Successfully executed Pause')
+                sendCommand('p')
             })
 
             toastr.options = {
@@ -67,6 +67,17 @@
                 "hideMethod": "fadeOut"
             }
 
+            function sendCommand(command) {
+                $.get("{!! url('roller-gate') !!}/" + command, function (data, status) {
+                    if (status === 'success'){
+                        toastr.success('Successfully executed' + command)
+                    } else {
+                        toastr.danger('Error!')
+                    }
+                });
+            }
         })
+
+
     </script>
 @endpush

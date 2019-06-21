@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Device;
 use App\IotCredential;
 use App\User;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +21,8 @@ class IotCredentialController extends Controller
 //        $accessToken = $stream->();
 //        return $iotLogin->getXtoken($tokens['access_token']);
 
-        $tokens = IotCredential::getTokens();
-        $iotLogin = IotCredential::getXtoken($tokens['access_token']);
+//        $tokens = IotCredential::getTokens();
+//        $iotLogin = IotCredential::getXtoken($tokens['access_token']);
 
 //        return $iotLogin['X-IoT-JWT'];
 
@@ -30,20 +31,26 @@ class IotCredentialController extends Controller
 //        return $devices = Device::getDeviceActions($tokens['access_token'], $iotLogin['X-IoT-JWT'], 16572);
 //        return $iotLogin['data']['userId'];
 
+//        $carbon = new Carbon();
+//        $y = $carbon->now();
+//        $x = $y->addSeconds(3600);
+
+//        return [$carbon, $x];
         $actions = ["u", "d", "p"];
 
 
-
-        for ($i = 0; $i < 20; $i++) {
-            $x = rand(0, 2);
+//
+//        for ($i = 0; $i < 20; $i++) {
+//            $x = rand(0, 2);
 
 //            Log::debug($actions[$x]);
-            $devices = Device::executeAction($tokens['access_token'], $iotLogin['X-IoT-JWT'], 15077, $iotLogin['data']['userId'], $actions[$x]);
+            $device = new Device();
+            $devices = $device->executeAction( 15077, $actions[0]);
 
 
-            Log::debug(($i+1).": {$actions[$x]}".collect($devices));
-            sleep('3');
-        }
+            Log::debug(collect($devices));
+//            sleep('3');
+//        }
 
         return 'Done';
 

@@ -8,13 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class IotCredential extends Model
 {
-    public $accessToken;
-    public $refreshToken;
-
-    public function __construct()
-    {
-
-    }
     
     public function user()
     {

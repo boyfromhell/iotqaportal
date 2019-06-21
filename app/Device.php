@@ -2,12 +2,26 @@
 
 namespace App;
 
+use App\Http\Middleware\IoTAPIAuth;
 use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
-class Device extends Model
+class Device extends IoTAPIAuth
 {
+
+    public $accessToken;
+    public $jwt;
+    public $user_id;
+
+    public function __construct()
+    {
+        $this->accessToken = session()->get('access_token');
+        $this->jwt = session()->get('jwt');
+        $this->user_id = session()->get('user_id');
+    }
+
     public function deviceCategories()
     {
         return $this->belongsToMany(DeviceCategory::class);
@@ -19,7 +33,7 @@ class Device extends Model
     }
 
 
-    public static function getDevices($accessToken, $jwtToken)
+    public function getDevices()
     {
 //        $user = IotCredential::where('user_id', Auth::id())->first();
 
@@ -28,25 +42,30 @@ class Device extends Model
         $client = new Client();
         $res = $client->request('GET', 'https://iot.dialog.lk/developer/api/userdevicemgt/v1/devices', [
             'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken,
-                'X-IoT-JWT' => $jwtToken
+                'Authorization' => 'Bearer ' . $this->accessToken,
+                'X-IoT-JWT' => $this->jwt
             ]
         ]);
         if ($res->getStatusCode() == 200) {
             return json_decode($res->getBody(), true);
+        } else {
+            $tokens = IotCredential::getTokens();
+            $iotLogin = IotCredential::getXtoken($tokens['access_token']);
+
+            self::getDevices($this->accessToken, $this->jwt);
         }
 
         return $res->getStatusCode();
     }
 
-    public static function getDevice($accessToken, $jwtToken, $deviceId)
+    public function getDevice($deviceId)
     {
 
         $client = new Client();
         $res = $client->request('GET', "https://iot.dialog.lk/developer/api/userdevicemgt/v1/devices/{$deviceId}", [
             'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken,
-                'X-IoT-JWT' => $jwtToken
+                'Authorization' => 'Bearer ' . $this->accessToken,
+                'X-IoT-JWT' => $this->jwt
             ]
         ]);
         if ($res->getStatusCode() == 200) {
@@ -56,14 +75,14 @@ class Device extends Model
         return $res->getStatusCode();
     }
 
-    public static function getDeviceActions($accessToken, $jwtToken, $deviceId)
+    public function getDeviceActions($accessToken, $jwtToken, $deviceId)
     {
 
         $client = new Client();
         $res = $client->request('GET', "https://iot.dialog.lk/developer/api/userdevicemgt/v1/devices/{$deviceId}/actions", [
             'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken,
-                'X-IoT-JWT' => $jwtToken
+                'Authorization' => 'Bearer ' . $this->accessToken,
+                'X-IoT-JWT' => $this->jwt
             ]
         ]);
         if ($res->getStatusCode() == 200) {
@@ -73,31 +92,30 @@ class Device extends Model
         return $res->getStatusCode();
     }
 
-    public static function getDeviceEvents($accessToken, $jwtToken, $deviceId)
+    public  function getDeviceEvents($deviceId)
     {
 
         $client = new Client();
         $res = $client->request('GET', "https://iot.dialog.lk/developer/api/userdevicemgt/v1/devices/{$deviceId}/events", [
             'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken,
-                'X-IoT-JWT' => $jwtToken
+                'Authorization' => 'Bearer ' . $this->accessToken,
+                'X-IoT-JWT' => $this->jwt
             ]
         ]);
         if ($res->getStatusCode() == 200) {
             return json_decode($res->getBody(), true);
         }
-
         return $res->getStatusCode();
     }
 
-    public static function executeAction($accessToken, $jwtToken, $deviceId, $userId, $action)
+    public function executeAction($deviceId, $action)
     {
 
         $client = new Client();
         $res = $client->post('https://iot.dialog.lk/developer/api/userdevicecontrol/v1/devices/executeaction', [
             'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken,
-                'X-IoT-JWT' => $jwtToken,
+                'Authorization' => 'Bearer ' . $this->accessToken,
+                'X-IoT-JWT' => $this->jwt,
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
             ],
@@ -105,7 +123,7 @@ class Device extends Model
                 "operation" => "deviceControl",
                 "deviceId" => $deviceId,
                 "actionName" => $action,
-                "userId" => $userId,
+                "userId" => $this->user_id,
 //                "actionParameters" => []
             ])
         ]);
@@ -113,17 +131,16 @@ class Device extends Model
         if ($res->getStatusCode() === 200) {
             return json_decode($res->getBody(), true);
         }
-
         return $res->getStatusCode();
     }
 
-    public static function createDevice($body = array(), $accessToken, $jwtToken)
+    public function createDevice($body = array())
     {
         $client = new Client();
         $res = $client->post('https://iot.dialog.lk/developer/api/userdevicecontrol/v1/devices', [
             'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken,
-                'X-IoT-JWT' => $jwtToken,
+                'Authorization' => 'Bearer ' . $this->accessToken,
+                'X-IoT-JWT' => $this->jwt,
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
             ],

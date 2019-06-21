@@ -70,7 +70,7 @@
             function sendCommand(command) {
                 $.get("{!! url('roller-gate') !!}/" + command, function (data, status) {
                     if (status === 'success'){
-                        toastr.success('Successfully executed' + command)
+                        toastr.success('Successfully executed ' + command)
                     } else {
                         toastr.danger('Error!')
                     }

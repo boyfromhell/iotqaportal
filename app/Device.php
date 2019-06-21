@@ -111,7 +111,8 @@ class Device extends IoTAPIAuth
     public function executeAction($deviceId, $action)
     {
 
-        $client = new Client();
+        Log::debug("access_token {$this->accessToken}");
+        $client = new Client();;
         $res = $client->post('https://iot.dialog.lk/developer/api/userdevicecontrol/v1/devices/executeaction', [
             'headers' => [
                 'Authorization' => 'Bearer ' . $this->accessToken,

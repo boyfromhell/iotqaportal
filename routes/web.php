@@ -44,5 +44,5 @@ Route::get('/get-access-token', function () {
 
 Route::get('authenticate', 'IotCredentialController@authenticate')->middleware('auth',\App\Http\Middleware\IoTAPIAuth::class);
 
-Route::get('roller-gate/{command}', 'DeviceController@controlGate');
+Route::get('roller-gate/{command}', 'DeviceController@controlGate')->middleware('auth',\App\Http\Middleware\IoTAPIAuth::class);;
 

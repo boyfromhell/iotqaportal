@@ -42,7 +42,7 @@ Route::get('/get-access-token', function () {
 //    $promise->wait();
 });
 
-Route::get('authenticate', 'IotCredentialController@authenticate')->middleware(\App\Http\Middleware\IoTAPIAuth::class);
+Route::get('authenticate', 'IotCredentialController@authenticate')->middleware('auth',\App\Http\Middleware\IoTAPIAuth::class);
 
 
 

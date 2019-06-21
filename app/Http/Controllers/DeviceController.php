@@ -11,6 +11,10 @@ class DeviceController extends Controller
     {
 
         $device = new Device();
-        return $response = $device->executeAction( 15077, $command);
+        $response = $device->executeAction( 15077, $command);
+
+        Log::debug(collect($response));
+
+        return $response;
     }
 }

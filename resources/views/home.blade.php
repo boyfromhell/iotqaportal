@@ -37,6 +37,10 @@
     ></script>
     <script>
         $(document).ready(function () {
+            // document.getElementById("myDiv").style.display = "none";
+
+            showPage();
+
             $('#up').click(function () {
                 sendCommand('u')
             })
@@ -68,16 +72,45 @@
             }
 
             function sendCommand(command) {
+                showLoader();
                 $.get("{!! url('roller-gate') !!}/" + command, function (data, status) {
-                    if (status === 'success'){
+                    console.log(data);
+                    console.log(status);
+                    if (status === 'success') {
+                        showPage();
                         toastr.success('Successfully executed ' + command)
                     } else {
-                        toastr.danger('Error!')
+                        console.log(data);
+                        toastr.warning('Error')
                     }
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    // console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                    showPage();
+                    toastr.error('Error: ' + errorThrown)
+
                 });
             }
         })
 
 
+    </script>
+    <script>
+        var myVar;
+
+        // function myFunction() {
+        //     myVar = setTimeout(showPage, 3000);
+        // }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("app").style.display = "block";
+        }
+
+        function showLoader() {
+            document.getElementById("loader").style.display = "block";
+            document.getElementById("app").style.display = "none";
+        }
     </script>
 @endpush

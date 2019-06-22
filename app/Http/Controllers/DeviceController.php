@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Device;
+use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -12,10 +13,15 @@ class DeviceController extends Controller
     {
 
         $device = new Device();
-        $response = $device->executeAction( 15077, $command);
 
-        Log::debug(collect($response));
+        try {
 
-        return $response;
+            $response = $device->executeAction(15077, $command);
+            Log::debug(collect($response));
+            return $response;
+        } catch (ClientException $e) {
+            return response()->json($e->getMessage(), $e->getCode());
+        }
+
     }
 }

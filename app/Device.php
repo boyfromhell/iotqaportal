@@ -111,7 +111,7 @@ class Device extends IoTAPIAuth
     public function executeAction($deviceId, $action)
     {
 
-//        Log::debug("access_token {$this->accessToken}");
+        Log::debug("access_token {$this->accessToken}");
         $client = new Client();
         $res = $client->post('https://iot.dialog.lk/developer/api/userdevicecontrol/v1/devices/executeaction', [
             'headers' => [
@@ -132,6 +132,7 @@ class Device extends IoTAPIAuth
         if ($res->getStatusCode() === 200) {
             return json_decode($res->getBody(), true);
         }
+
         return $res->getStatusCode();
     }
 

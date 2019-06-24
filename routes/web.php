@@ -42,7 +42,19 @@ Route::get('/get-access-token', function () {
 //    $promise->wait();
 });
 
-Route::get('authenticate', 'IotCredentialController@authenticate')->middleware('auth',\App\Http\Middleware\IoTAPIAuth::class);
+Route::get('authenticate', 'IotCredentialController@authenticate')->middleware('auth', \App\Http\Middleware\IoTAPIAuth::class);
 
-Route::get('roller-gate/{command}', 'DeviceController@controlGate')->middleware('auth',\App\Http\Middleware\IoTAPIAuth::class);
+Route::get('roller-gate/{command}', 'DeviceController@controlGate')->middleware('auth', \App\Http\Middleware\IoTAPIAuth::class);
+
+
+Route::group(['before' => 'auth', 'prefix' => 'devices'], function () {
+    Route::get('/', 'DeviceController@index');
+
+    Route::get('actions/{id}', function ($id) {
+        $device = new \App\Device();
+        return $device->getactions($id);
+    });
+});
+
+
 

@@ -9,6 +9,19 @@ use Illuminate\Support\Facades\Log;
 
 class DeviceController extends Controller
 {
+
+    public $device;
+
+    public function __construct()
+    {
+//        $this->device =
+    }
+
+    public function index()
+    {
+
+    }
+
     public function controlGate($command)
     {
 

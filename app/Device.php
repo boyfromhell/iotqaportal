@@ -75,7 +75,7 @@ class Device extends IoTAPIAuth
         return $res->getStatusCode();
     }
 
-    public function getDeviceActions($deviceId)
+    public function getActions($deviceId)
     {
 
         $client = new Client();

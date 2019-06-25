@@ -102,9 +102,9 @@
                                     <tbody>
                                     @foreach($events as $event)
                                         <tr>
-                                            <td>{{$event['id']}}</td>
-                                            <td>{{$event['name']}}</td>
-                                            <td>{{$event['displayName']}}</td>
+                                            <td>{{$event}}</td>
+{{--                                            <td>{{$event['name']}}</td>--}}
+{{--                                            <td>{{$event['displayName']}}</td>--}}
                                         </tr>
                                     </tbody>
                                     @endforeach

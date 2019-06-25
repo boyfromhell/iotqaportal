@@ -35,7 +35,7 @@ class DeviceController extends Controller
     public function events($deviceId)
     {
         $device = new Device();
-        return $device->getActions($deviceId);
+        return $device->getDeviceEvents($deviceId);
     }
 
     public function executeAction($deviceId, $command)

@@ -97,7 +97,6 @@
                                         <th>Action Id</th>
                                         <th>Name</th>
                                         <th>Display Name</th>
-                                        <th>&nbsp;</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -106,10 +105,6 @@
                                             <td>{{$event['id']}}</td>
                                             <td>{{$event['name']}}</td>
                                             <td>{{$event['displayName']}}</td>
-                                            <td>
-                                                <a href="{{ url("devices/{$event['id']}/action/{$event['name']}") }}"
-                                                   class="btn btn-outline-primary">Run</a>
-                                            </td>
                                         </tr>
                                     </tbody>
                                     @endforeach

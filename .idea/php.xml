@@ -95,6 +95,11 @@
       <path value="$PROJECT_DIR$/vendor/php-junior/nova-logs" />
       <path value="$PROJECT_DIR$/vendor/arcanedev/support" />
       <path value="$PROJECT_DIR$/vendor/spatie/nova-tail-tool" />
+      <path value="$PROJECT_DIR$/vendor/simonhamp/laravel-nova-csv-import" />
+      <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

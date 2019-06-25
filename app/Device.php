@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
-class Device extends IoTAPIAuth
+class Device extends Model
 {
 
     public $accessToken;

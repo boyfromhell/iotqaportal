@@ -82,6 +82,44 @@
 
             </div>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Device Events</div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Action Id</th>
+                                        <th>Name</th>
+                                        <th>Display Name</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($events as $event)
+                                        <tr>
+                                            <td>{{$event['id']}}</td>
+                                            <td>{{$event['name']}}</td>
+                                            <td>{{$event['displayName']}}</td>
+                                            <td>
+                                                <a href="{{ url("devices/{$event['id']}/action/{$event['name']}") }}" class="btn btn-outline-primary">Run</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    @endforeach
+                                </table>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 @endsection
 

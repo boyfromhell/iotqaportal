@@ -46,7 +46,7 @@ class Device extends Resource
             ID::make()->sortable(),
             Text::make('Platform Device ID'),
             BelongsToMany::make('Device Categories', 'deviceCategories'),
-            BelongsTo::make('Iot Device Credentials', 'iotDeviceCredentials')->nullable()
+            BelongsTo::make('Iot Credentials', 'iotCredentials')->nullable()
         ];
     }
 

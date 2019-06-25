@@ -47,9 +47,10 @@ class Sequence extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Action'),
-            Code::make('Action Params'),
-            Number::make('duration'),
-            BelongsTo::make('Test Case', 'testCase')
+            Textarea::make('Action Params'),
+            Number::make('Duration'),
+//            Number::make('Test Case Id', 'test_case_id')->nullable(),
+            BelongsTo::make('Test Case', 'testCase')->nullable()
         ];
     }
 

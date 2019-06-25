@@ -27,7 +27,7 @@ class Device extends Model
         return $this->belongsToMany(DeviceCategory::class);
     }
 
-    public function iotDeviceCredentials()
+    public function iotCredentials()
     {
         return $this->belongsTo(IotCredential::class);
     }

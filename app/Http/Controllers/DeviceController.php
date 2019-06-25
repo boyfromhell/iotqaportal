@@ -22,7 +22,7 @@ class DeviceController extends Controller
         $deviceObj = new Device();
         $device = $deviceObj->getDevice($deviceId);
         $actions = $deviceObj->getActions($deviceId);
-        $events = $deviceObj->getDeviceEvents($deviceId);
+        $events = $deviceObj->getEvents($deviceId);
         return view('devices.show', compact('device', 'actions', 'events'));
     }
 
@@ -35,7 +35,7 @@ class DeviceController extends Controller
     public function events($deviceId)
     {
         $device = new Device();
-        return $device->getDeviceEvents($deviceId);
+        return $device->getEvents($deviceId);
     }
 
     public function executeAction($deviceId, $command)

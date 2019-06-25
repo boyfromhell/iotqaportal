@@ -68,7 +68,8 @@
                                             <td>{{$action['name']}}</td>
                                             <td>{{$action['displayName']}}</td>
                                             <td>
-                                                <a href="{{ url("devices/{$device['id']}/action/{$action['name']}") }}" class="btn btn-outline-primary">Run</a>
+                                                <a href="{{ url("devices/{$device['id']}/action/{$action['name']}") }}"
+                                                   class="btn btn-outline-primary">Run</a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -106,7 +107,8 @@
                                             <td>{{$event['name']}}</td>
                                             <td>{{$event['displayName']}}</td>
                                             <td>
-                                                <a href="{{ url("devices/{$event['id']}/action/{$event['name']}") }}" class="btn btn-outline-primary">Run</a>
+                                                <a href="{{ url("devices/{$event['id']}/action/{$event['name']}") }}"
+                                                   class="btn btn-outline-primary">Run</a>
                                             </td>
                                         </tr>
                                     </tbody>

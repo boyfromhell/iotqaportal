@@ -18,8 +18,9 @@ class SequenceController extends Controller
         $testCase = TestCase::with('sequences')->find($testCaseId);
 //        event(new RunTestCase($testCase));
 
-        dispatch($testCase)->delay(now()->addSeconds(1));
+        $job = (new RunDeviceTestJob($testCase))->delay(now()->addSeconds(1));;
 
+        $this->dispatch($job);
         return 'Done';
     }
 }

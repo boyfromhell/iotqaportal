@@ -24,7 +24,7 @@ class DeviceController extends Controller
         $device = $deviceObj->getDevice($deviceId);
         $actions = $deviceObj->getActions($deviceId);
         $events = $deviceObj->getEvents($deviceId);
-        $tests = TestCase::where(['device_id'=> $deviceId])->all();
+        $tests = TestCase::where('device_id',$deviceId)->get();
         return view('devices.show', compact('device', 'actions', 'events', 'tests'));
     }
 

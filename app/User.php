@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(IotCredential::class);
     }
+
+    public function iotToken()
+    {
+        return $this->hasOne(IotToken::class);
+    }
 }

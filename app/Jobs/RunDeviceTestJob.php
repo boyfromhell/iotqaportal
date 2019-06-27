@@ -27,6 +27,7 @@ class RunDeviceTestJob implements ShouldQueue
      */
     public function __construct(TestCase $testCase)
     {
+
         $this->testCase = $testCase;
     }
 

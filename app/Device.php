@@ -18,9 +18,10 @@ class Device extends Model
     public function __construct()
     {
 
-        $this->accessToken = session()->get('access_token');
-        $this->jwt = session()->get('jwt');
-        $this->user_id = session()->get('user_id');
+        $iotToken = IotToken::where('user_id', Auth::id())->first();
+        $this->accessToken = $iotToken->access_token;
+        $this->jwt = $iotToken->jwt_token;
+        $this->user_id = $iotToken->iot_user_id;
     }
 
     public function deviceCategories()
@@ -36,9 +37,6 @@ class Device extends Model
 
     public function getDevices()
     {
-//        $user = IotCredential::where('user_id', Auth::id())->first();
-
-//        dd($jwtToken);
 
         $client = new Client();
         $res = $client->request('GET', 'https://iot.dialog.lk/developer/api/userdevicemgt/v1/devices', [
@@ -49,11 +47,6 @@ class Device extends Model
         ]);
         if ($res->getStatusCode() == 200) {
             return json_decode($res->getBody(), true);
-        } else {
-            $tokens = IotCredential::getTokens();
-            $iotLogin = IotCredential::getXtoken($tokens['access_token']);
-
-            self::getDevices($this->accessToken, $this->jwt);
         }
 
         return $res->getStatusCode();
@@ -93,7 +86,7 @@ class Device extends Model
         return $res->getStatusCode();
     }
 
-    public  function getEvents($deviceId)
+    public function getEvents($deviceId)
     {
 
         $client = new Client();
@@ -125,7 +118,7 @@ class Device extends Model
 //                "actionParameters" => []
         ];
 
-        if(!empty($actionParams)){
+        if (!empty($actionParams)) {
             $body['actionParameters'] = json_decode($actionParams);
         }
 //        dd($body);

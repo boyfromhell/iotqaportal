@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Middleware\IoTAPIAuth;
 use App\Jobs\RunDeviceTestJob;
 use App\TestCase;
 
 
 class SequenceController extends Controller
 {
+
+//    public function __construct()
+//    {
+//        $this->middleware(IoTAPIAuth::class);
+//    }
 
     public function runTest($testCaseId)
     {

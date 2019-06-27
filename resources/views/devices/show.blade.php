@@ -143,7 +143,7 @@
                                             <tr>
                                                 <td>{{$test->id}}</td>
                                                 <td>{{$test->name}}</td>
-                                                <td>{{url("test/{$test->id}")}}</td>
+                                                <td><a href="{{{{url("test/{$test->id}")}}}}" class="btn btn-outline-primary">Run Test</a></td>
                                             </tr>
                                         </tbody>
                                         @endforeach

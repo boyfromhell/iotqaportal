@@ -19,16 +19,18 @@ class RunDeviceTestJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $testCase;
+    public $userId;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(TestCase $testCase)
+    public function __construct(TestCase $testCase, $userId)
     {
 
         $this->testCase = $testCase;
+        $this->userId = $userId;
     }
 
     /**
@@ -43,12 +45,11 @@ class RunDeviceTestJob implements ShouldQueue
 
         Log::debug('Access Token: ' . session()->get('access_token'));
 
-        $device = new Device();
+        $device = new Device($this->userId);
         for ($x = 0; $x < $this->testCase->loops; $x++) {
             Log::debug('Loop: ' . $x);
             foreach ($actionSeries as $action) {
                 try {
-
 
                     $response = $device->executeAction((integer)$this->testCase->device_id, $action->action, json_decode($action->action_params));
                     Log::debug(collect($response));

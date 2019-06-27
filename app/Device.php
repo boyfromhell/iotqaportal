@@ -15,9 +15,9 @@ class Device extends Model
     public $jwt;
     public $user_id;
 
-    public function __construct()
+    public function __construct($userId)
     {
-        $iotToken = IotToken::where('user_id', Auth::id())->first();
+        $iotToken = IotToken::where('user_id', $userId)->first();
         Log::debug((string)$iotToken);
         $this->accessToken = $iotToken->access_token;
         $this->jwt = $iotToken->jwt_token;

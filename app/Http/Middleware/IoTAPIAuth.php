@@ -22,6 +22,7 @@ class IoTAPIAuth
 //        return 'Hi';
 
         if ($this->tokensAreValid()) {
+//            Log::debug('Tokens are Valid');
             return $next($request);
         }
 

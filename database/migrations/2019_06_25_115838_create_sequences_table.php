@@ -16,7 +16,7 @@ class CreateSequencesTable extends Migration
         Schema::create('sequences', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('action');
-            $table->json('action_params');
+            $table->json('action_params')->nullable();
             $table->integer('duration');
             $table->unsignedBigInteger('test_case_id');
             $table->timestamps();

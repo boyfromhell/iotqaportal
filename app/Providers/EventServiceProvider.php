@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\RunTestCase;
+use App\Listeners\RunTestCaseListener;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -15,9 +17,10 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
-        ],
+
+        RunTestCase::class => [
+            RunTestCaseListener::class
+        ]
     ];
 
     /**

@@ -17,6 +17,7 @@ class Device extends Model
 
     public function __construct()
     {
+
         $this->accessToken = session()->get('access_token');
         $this->jwt = session()->get('jwt');
         $this->user_id = session()->get('user_id');
@@ -102,17 +103,34 @@ class Device extends Model
                 'X-IoT-JWT' => $this->jwt
             ]
         ]);
+
         if ($res->getStatusCode() == 200) {
             return json_decode($res->getBody(), true);
         }
+
         return $res->getStatusCode();
     }
 
-    public function executeAction($deviceId, $action)
+    public function executeAction($deviceId, $action, $actionParams = array())
     {
 
         Log::debug("access_token {$this->accessToken}");
         $client = new Client();
+
+        $body = [
+            "operation" => "deviceControl",
+            "deviceId" => $deviceId,
+            "actionName" => $action,
+            "userId" => $this->user_id,
+//                "actionParameters" => []
+        ];
+
+        if(!empty($actionParams)){
+            $body['actionParameters'] = json_decode($actionParams);
+        }
+//        dd($body);
+//        Log::debug((string)$body);
+
         $res = $client->post('https://iot.dialog.lk/developer/api/userdevicecontrol/v1/devices/executeaction', [
             'headers' => [
                 'Authorization' => 'Bearer ' . $this->accessToken,
@@ -120,13 +138,7 @@ class Device extends Model
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
             ],
-            'body' => json_encode([
-                "operation" => "deviceControl",
-                "deviceId" => $deviceId,
-                "actionName" => $action,
-                "userId" => $this->user_id,
-//                "actionParameters" => []
-            ])
+            'body' => json_encode($body)
         ]);
 
         if ($res->getStatusCode() === 200) {

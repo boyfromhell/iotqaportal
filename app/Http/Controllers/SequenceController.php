@@ -2,84 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Sequence;
-use Illuminate\Http\Request;
+
+use App\Jobs\RunDeviceTestJob;
+use App\TestCase;
+
 
 class SequenceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function runTest($testCaseId)
     {
-        //
-    }
+//        $tokens = IotCredential::getTokens();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+//        dd($testCaseId);
+        $testCase = TestCase::with('sequences')->find($testCaseId);
+//        event(new RunTestCase($testCase));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Sequence  $sequence
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Sequence $sequence)
-    {
-        //
-    }
+        RunDeviceTestJob::dispatch($testCase);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Sequence  $sequence
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Sequence $sequence)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sequence  $sequence
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Sequence $sequence)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Sequence  $sequence
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Sequence $sequence)
-    {
-        //
+        return 'Done';
     }
 }

@@ -29,6 +29,7 @@ class SequenceController extends Controller
         $job = (new RunDeviceTestJob($testCase, $userId))->delay(now()->addSeconds(1));;
 
         $this->dispatch($job);
-        return 'Done';
+        session()->flash('success','Added To Queue');
+        return redirect()->back();
     }
 }

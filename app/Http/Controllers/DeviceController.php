@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Device;
+use App\TestCase;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -23,7 +24,8 @@ class DeviceController extends Controller
         $device = $deviceObj->getDevice($deviceId);
         $actions = $deviceObj->getActions($deviceId);
         $events = $deviceObj->getEvents($deviceId);
-        return view('devices.show', compact('device', 'actions', 'events'));
+        $tests = TestCase::where(['device_id'=> $deviceId])->all();
+        return view('devices.show', compact('device', 'actions', 'events', 'tests'));
     }
 
     public function actions($deviceId)

@@ -121,6 +121,43 @@
 
             </div>
         </div>
+
+        @if(!empty($tests))
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Test cases</div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Test Id</th>
+                                            <th>Name</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($tests as $test)
+                                            <tr>
+                                                <td>{{$test->id}}</td>
+                                                <td>{{$test->name}}</td>
+                                                <td>{{url("test/{$test->id}")}}</td>
+                                            </tr>
+                                        </tbody>
+                                        @endforeach
+                                    </table>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
 

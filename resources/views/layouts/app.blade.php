@@ -147,6 +147,9 @@
                                 </form>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a href="{{url('devices')}}">Devices</a>
+                        </li>
                     @endguest
                 </ul>
             </div>

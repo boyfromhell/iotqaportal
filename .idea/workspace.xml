@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37326214-fd9b-4884-92f4-2384a0b2a156" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/IotTokenController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/IotToken.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/IotTokenFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_06_27_103218_create_iot_tokens_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Nova/IotToken.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Device.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Device.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SequenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SequenceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/IoTAPIAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/IoTAPIAuth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/RunDeviceTestJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/RunDeviceTestJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/devices/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/devices/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/IotToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/IotToken.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,15 +34,6 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/routes/web.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="239">
-                  <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Providers/NovaServiceProvider.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="334">
@@ -59,14 +42,35 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Device.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="380">
-                  <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+                <state relative-caret-position="285">
+                  <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
                   <folding>
                     <element signature="e#23#58#0#PHP" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Nova/IotToken.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="418">
+                  <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+                  <folding>
+                    <element signature="e#28#62#0#PHP" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/IotCredential.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="114">
+                  <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -116,11 +120,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/IotToken.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="266">
-                  <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+                <state relative-caret-position="342">
+                  <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
                 </state>
               </provider>
             </entry>
@@ -132,18 +136,6 @@
                   <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
                   <folding>
                     <element signature="e#40#55#0#PHP" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/Events/RunTestCase.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="494">
-                  <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
-                  <folding>
-                    <element signature="e#30#65#0#PHP" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -177,8 +169,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_27_103218_create_iot_tokens_table.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+                <state relative-caret-position="399">
+                  <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
                 </state>
               </provider>
             </entry>
@@ -204,8 +196,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/.env">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+                <state relative-caret-position="342">
+                  <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -229,7 +221,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_05_21_214015_create_devices_table.php" />
         <option value="$PROJECT_DIR$/app/DeviceCategory.php" />
         <option value="$PROJECT_DIR$/app/Nova/DeviceCategory.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_23_143916_create_movie_genres_table.php" />
@@ -277,9 +268,10 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_27_103218_create_iot_tokens_table.php" />
-        <option value="$PROJECT_DIR$/app/IotToken.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/IoTAPIAuth.php" />
         <option value="$PROJECT_DIR$/app/Device.php" />
+        <option value="$PROJECT_DIR$/app/Nova/IotToken.php" />
+        <option value="$PROJECT_DIR$/app/IotToken.php" />
       </list>
     </option>
   </component>
@@ -388,8 +380,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="188" />
-    <option name="y" value="-8" />
+    <option name="x" value="272" />
+    <option name="y" value="109" />
     <option name="width" value="1547" />
     <option name="height" value="840" />
   </component>
@@ -422,49 +414,7 @@
               <item name="iotqaportal" type="b2602c69:ProjectViewProjectNode" />
               <item name="iotqaportal" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotqaportal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotqaportal" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotqaportal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotqaportal" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="API" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotqaportal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotqaportal" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Auth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotqaportal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotqaportal" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Middleware" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotqaportal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotqaportal" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Jobs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotqaportal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotqaportal" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Listeners" type="462c0819:PsiDirectoryNode" />
+              <item name="Nova" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iotqaportal" type="b2602c69:ProjectViewProjectNode" />
@@ -595,7 +545,7 @@
       <workItem from="1561438894608" duration="3055000" />
       <workItem from="1561454483585" duration="13514000" />
       <workItem from="1561508793937" duration="5000" />
-      <workItem from="1561524621609" duration="38197000" />
+      <workItem from="1561524621609" duration="38956000" />
     </task>
     <task id="LOCAL-00001" summary="apis">
       <created>1558682759636</created>
@@ -877,17 +827,24 @@
       <option name="project" value="LOCAL" />
       <updated>1561629099994</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Auth mechanism changed">
+      <created>1561634971619</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1561634971622</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199161000" />
+    <option name="totallyTimeSpent" value="199920000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15938166" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22334754" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -960,7 +917,8 @@
     <MESSAGE value="front end for roller gate" />
     <MESSAGE value="Device Events" />
     <MESSAGE value="Test cases and sequences" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test cases and sequences" />
+    <MESSAGE value="Auth mechanism changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Auth mechanism changed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -974,7 +932,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubscriberController.php" />
     <entry file="file://$PROJECT_DIR$/.env.example">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1047,13 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/IotCredential.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="29" column="50" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -1169,7 +1119,7 @@
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1248,13 +1198,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SequenceController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
@@ -1279,20 +1222,6 @@
           <folding>
             <element signature="e#40#55#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_27_103218_create_iot_tokens_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/IotToken.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1323,13 +1252,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Device.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+        <state relative-caret-position="285">
+          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
           <folding>
             <element signature="e#23#58#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_27_103218_create_iot_tokens_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Nova/IotToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+          <folding>
+            <element signature="e#28#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/IotCredential.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/IotToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
         </state>
       </provider>
     </entry>

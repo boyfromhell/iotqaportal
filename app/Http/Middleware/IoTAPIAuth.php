@@ -21,10 +21,9 @@ class IoTAPIAuth
     {
 //        return 'Hi';
 
-        if ($this->tokensAreValid()) {
-//            Log::debug('Tokens are Valid');
-            return $next($request);
-        }
+//        if ($this->tokensAreValid()) {
+//            return $next($request);
+//        }
 
         $tokens = IotCredential::getTokens();
 

@@ -48,7 +48,8 @@ class DeviceController extends Controller
 
             $response = $device->executeAction((integer)$deviceId, $command);
             Log::debug(collect($response));
-            return $response;
+            session()->flash('success', 'Successfully Executed');
+            return redirect()->back();
         } catch (ClientException $e) {
             return response()->json($e->getMessage(), $e->getCode());
         }

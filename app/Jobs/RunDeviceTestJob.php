@@ -3,7 +3,9 @@
 namespace App\Jobs;
 
 use App\Device;
+use App\IotCredential;
 use App\TestCase;
+use Carbon\Carbon;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -35,7 +37,7 @@ class RunDeviceTestJob implements ShouldQueue
      */
     public function handle()
     {
-//        $testCase = $event->testCase;
+
         $actionSeries = $this->testCase->sequences;
 
         Log::debug('Access Token: ' . session()->get('access_token'));

@@ -9,6 +9,6 @@ class SmsController extends Controller
 {
     public function captureMessage(Request $request)
     {
-        return $request->inboundSMSMessageNotification->inboundSMSMessage->message;
+        return $request['inboundSMSMessageNotification']['inboundSMSMessage']['message'];
     }
 }

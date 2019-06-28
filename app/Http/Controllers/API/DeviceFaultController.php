@@ -15,5 +15,9 @@ class DeviceFaultController extends Controller
     public function captureMessage(Request $request)
     {
         Log::debug("Incoming SMS: ".(string)$request->all());
+
+
+
+        return 200;
     }
 }

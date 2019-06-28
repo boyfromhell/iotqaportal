@@ -66,3 +66,4 @@ Route::group(['prefix' => 'devices'], function () {
 Route::get('test/{id}', 'SequenceController@runTest')->middleware('auth', \App\Http\Middleware\IoTAPIAuth::class);
 
 
+

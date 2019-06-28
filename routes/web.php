@@ -49,12 +49,16 @@ Route::get('roller-gate/{command}', 'DeviceController@controlGate')->middleware(
 
 Route::group(['prefix' => 'devices'], function () {
     Route::get('/', 'DeviceController@index')->middleware('auth', \App\Http\Middleware\IoTAPIAuth::class);
-
+    Route::get('/ds', function (){
+        $devices = new \App\Device();
+        return $devices->getDeviceSelect();
+    });
     Route::get('{id}', 'DeviceController@show')->middleware('auth', \App\Http\Middleware\IoTAPIAuth::class);
     Route::get('{id}/actions', 'DeviceController@actions')->middleware('auth', \App\Http\Middleware\IoTAPIAuth::class);
     Route::get('{id}/events', 'DeviceController@actions')->middleware('auth', \App\Http\Middleware\IoTAPIAuth::class);
     Route::get('{id}/action/{action}', 'DeviceController@executeAction')->middleware('auth', \App\Http\Middleware\IoTAPIAuth::class);
 //    Route::get('{id}/status', 'DeviceController@actions');
+
 
 });
 

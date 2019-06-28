@@ -2,11 +2,13 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\RunTestCase;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -43,10 +45,14 @@ class TestCase extends Resource
      */
     public function fields(Request $request)
     {
+        $device = new \App\Device();
+
         return [
             ID::make()->sortable(),
             Text::make('Name'),
-            Number::make('Device Id'),
+            Select::make('Device', 'device_id')
+                ->options($device->getDeviceSelect())
+                ->displayUsingLabels(),
             Number::make('loops'),
 //            BelongsTo::make('User')
             HasMany::make('Sequences', 'sequences')
@@ -94,6 +100,8 @@ class TestCase extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new RunTestCase()
+        ];
     }
 }

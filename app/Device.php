@@ -176,4 +176,13 @@ class Device extends Model
         return $res->getStatusCode();
     }
 
+    public function getDeviceSelect()
+    {
+        $devices = collect($this->getDevices());
+        return $devices->mapWithKeys(function ($value) {
+            return [$value['id'] => $value['name']];
+        });
+
+    }
+
 }

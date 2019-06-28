@@ -143,7 +143,8 @@
                                             <tr>
                                                 <td>{{$test->id}}</td>
                                                 <td>{{$test->name}}</td>
-                                                <td><a href="{{url("test/{$test->id}")}}" class="btn btn-outline-primary">Run Test</a></td>
+                                                <td><a href="{{url("test/{$test->id}")}}"
+                                                       class="btn btn-outline-primary">Run Test</a></td>
                                             </tr>
                                         </tbody>
                                         @endforeach
@@ -153,7 +154,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         @endif

@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\Auth;
 class SequenceController extends Controller
 {
 
-//    public function __construct()
-//    {
-//        $this->middleware(IoTAPIAuth::class);
-//    }
-
     public function runTest($testCaseId)
     {
 //        $tokens = IotCredential::getTokens();

@@ -22,4 +22,4 @@ Route::get('roller-gate/{command}', 'DeviceController@controlGate');
 Route::any('receive', 'SubscriberController@store');
 Route::any('delete', 'SubscriberController@delete');
 
-Route::post('device/fault/sms', 'DeviceFaultController@captureMessage');
+Route::post('device/fault/sms', 'SmsController@captureMessage');

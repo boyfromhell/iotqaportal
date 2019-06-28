@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class SmsController extends Controller
 {
-    public function captureMessage($request)
+    public function captureMessage(Request $request)
     {
         return $request->all();
     }

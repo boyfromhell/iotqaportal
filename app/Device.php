@@ -142,6 +142,38 @@ class Device extends Model
         return $res->getStatusCode();
     }
 
+    public function executeTestAction($deviceId, $action, $actionParams = array())
+    {
+        Log::debug("access_token {$this->accessToken}");
+        $client = new Client();
+
+        $body = [
+            "operation" => "deviceControl",
+            "deviceId" => $deviceId,
+            "actionName" => $action,
+            "userId" => $this->user_id,
+//                "actionParameters" => []
+        ];
+
+        if (!empty($actionParams)) {
+            $body['actionParameters'] = json_decode($actionParams);
+        }
+//        dd($body);
+//        Log::debug((string)$body);
+
+        $res = $client->post('https://iot.dialog.lk/developer/api/userdevicecontrol/v1/devices/executeaction', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $this->accessToken,
+                'X-IoT-JWT' => $this->jwt,
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'body' => json_encode($body)
+        ]);
+
+        return $res;
+    }
+
     public function createDevice($body = array())
     {
         $client = new Client();

@@ -14,6 +14,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class TestCase extends Resource
 {
+    public static $with = ['sequences', 'testCaseSummaries'];
     /**
      * The model the resource corresponds to.
      *
@@ -40,7 +41,7 @@ class TestCase extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function fields(Request $request)
@@ -55,14 +56,15 @@ class TestCase extends Resource
                 ->displayUsingLabels(),
             Number::make('loops'),
 //            BelongsTo::make('User')
-            HasMany::make('Sequences', 'sequences')
+            HasMany::make('Sequences', 'sequences'),
+            HasMany::make('Test Case Summaries', 'testCaseSummaries')
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -73,7 +75,7 @@ class TestCase extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -84,7 +86,7 @@ class TestCase extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -95,7 +97,7 @@ class TestCase extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function actions(Request $request)

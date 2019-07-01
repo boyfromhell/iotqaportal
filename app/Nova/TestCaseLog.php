@@ -6,26 +6,26 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Psy\Util\Json;
 
-class Sequence extends Resource
+class TestCaseLog extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Sequence';
+    public static $model = 'App\TestCaseLog';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'action';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -46,11 +46,11 @@ class Sequence extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Action'),
-            Textarea::make('Action Params'),
-            Number::make('Duration'),
-//            Number::make('Test Case Id', 'test_case_id')->nullable(),
-            BelongsTo::make('Test Case', 'testCase')->nullable()
+            BelongsTo::make('Test Case Summary', 'testCaseSummary'),
+            BelongsTo::make('Sequence', 'sequence'),
+            Textarea::make('response'),
+            Text::make('status'),
+            Text::make('Created At'),
         ];
     }
 

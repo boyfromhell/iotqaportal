@@ -4,6 +4,7 @@ namespace App\Nova\Actions;
 
 use App\Jobs\RunDeviceTestJob;
 use App\TestCase;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Nova\Actions\Action;
@@ -12,6 +13,7 @@ use Laravel\Nova\Fields\ActionFields;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Laravel\Nova\Fields\Text;
 
 class RunTestCase extends Action
 {
@@ -28,7 +30,7 @@ class RunTestCase extends Action
     {
         $userId = Auth::id();
         foreach ($models as $model) {
-            $job = (new RunDeviceTestJob($model, $userId))->delay(now()->addSeconds(1));
+            $job = (new RunDeviceTestJob($model, $userId, $fields->comment));
             dispatch($job);
         }
     }
@@ -40,6 +42,8 @@ class RunTestCase extends Action
      */
     public function fields()
     {
-        return [];
+        return [
+            Text::make('comment')
+        ];
     }
 }

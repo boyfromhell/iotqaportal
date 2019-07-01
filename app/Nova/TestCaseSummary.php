@@ -3,29 +3,27 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Sequence extends Resource
+class TestCaseSummary extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Sequence';
+    public static $model = 'App\TestCaseSummary';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'action';
+    public static $title = 'comment';
 
     /**
      * The columns that should be searched.
@@ -46,11 +44,10 @@ class Sequence extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Action'),
-            Textarea::make('Action Params'),
-            Number::make('Duration'),
-//            Number::make('Test Case Id', 'test_case_id')->nullable(),
-            BelongsTo::make('Test Case', 'testCase')->nullable()
+            BelongsTo::make('Test Case', 'testCase'),
+            Text::make('Comment'),
+
+            HasMany::make('Test Case Log', 'testCaseLogs')
         ];
     }
 

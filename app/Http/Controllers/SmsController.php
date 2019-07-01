@@ -25,6 +25,8 @@ class SmsController extends Controller
         $sms->modem_fail = $data[9] ?? null;
         $sms->network_fail = $data[10] ?? null;
         $sms->gprs_fail = $data[11] ?? null;
+        $sms->other = $data[12] ?? null;
+
 
         $sms->save();
 

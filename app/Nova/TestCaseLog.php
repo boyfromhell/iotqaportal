@@ -48,8 +48,9 @@ class TestCaseLog extends Resource
             ID::make()->sortable(),
             BelongsTo::make('Test Case Summary', 'testCaseSummary'),
             BelongsTo::make('Sequence', 'sequence'),
-            Textarea::make('response'),
-            Text::make('status'),
+            Textarea::make('Response')->alwaysShow(),
+            Text::make('Status'),
+            Text::make('Wait Time'),
             Text::make('Created At'),
         ];
     }

@@ -10,6 +10,8 @@ class SmsController extends Controller
     public function captureMessage(Request $request)
     {
         $message = $request['inboundSMSMessageNotification']['inboundSMSMessage']['message'];
+        $message = trim($message);
+        $message = str_replace(' ', '', $message);
         $data = explode(',', $message);
 
         $sms = new Sms();

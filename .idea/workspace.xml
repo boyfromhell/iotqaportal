@@ -162,8 +162,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SmsController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="513">
-                  <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+                <state relative-caret-position="285">
+                  <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
                   <folding>
                     <element signature="e#40#52#0#PHP" expanded="true" />
                   </folding>
@@ -590,21 +590,7 @@
       <workItem from="1561524621609" duration="39373000" />
       <workItem from="1561636183665" duration="4955000" />
       <workItem from="1561694378395" duration="15097000" />
-      <workItem from="1561971157952" duration="1167000" />
-    </task>
-    <task id="LOCAL-00014" summary="nova">
-      <created>1561028523579</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1561028523579</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Access Token manager">
-      <created>1561103240914</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1561103240916</updated>
+      <workItem from="1561971157952" duration="1933000" />
     </task>
     <task id="LOCAL-00016" summary="Access Token manager">
       <created>1561103381551</created>
@@ -935,11 +921,25 @@
       <option name="project" value="LOCAL" />
       <updated>1561720302911</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Auth mechanism changed">
+      <created>1561972334778</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1561972334778</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Auth mechanism changed">
+      <created>1561972908156</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1561972908156</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221556000" />
+    <option name="totallyTimeSpent" value="222322000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -1412,8 +1412,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SmsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+        <state relative-caret-position="285">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
           <folding>
             <element signature="e#40#52#0#PHP" expanded="true" />
           </folding>

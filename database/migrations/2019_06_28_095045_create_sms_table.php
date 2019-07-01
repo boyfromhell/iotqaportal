@@ -15,7 +15,7 @@ class CreateSmsTable extends Migration
     {
         Schema::create('sms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('serial_number')->unique()->index();
+            $table->string('serial_number')->index();
             $table->bigInteger('imei')->nullable();
             $table->string('event_name')->nullable();
             $table->string('session_id')->nullable();

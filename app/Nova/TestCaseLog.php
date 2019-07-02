@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -52,7 +53,7 @@ class TestCaseLog extends Resource
             Textarea::make('Response')->alwaysShow(),
             Text::make('Status'),
             Text::make('Wait Time'),
-            Text::make('Created At'),
+            DateTime::make('Created At'),
         ];
     }
 

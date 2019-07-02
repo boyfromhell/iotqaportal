@@ -81,7 +81,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <img src="{{asset('img/logo.png')}}" alt="" width="300px">
+                    <br>
+                    IoT QA PORTAL
                 </div>
 
 {{--                <div class="links">--}}

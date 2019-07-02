@@ -30,7 +30,7 @@ class Sms extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'serial_number'
     ];
 
     /**
@@ -55,7 +55,7 @@ class Sms extends Resource
             Text::make('modem_fail'),
             Text::make('network_fail'),
             Text::make('gprs_fail'),
-            DateTime::make('Created At')
+            DateTime::make('Created At', 'created_at')
         ];
     }
 

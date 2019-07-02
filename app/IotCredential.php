@@ -18,7 +18,7 @@ class IotCredential extends Model
     public static function getTokens($userId = null)
     {
 
-        $userId = $userId ?? Auth::id();
+        $userId = empty($userId) ? Auth::id() : $userId;
         $user = IotCredential::where('user_id', $userId)->first();
 
         $client = new Client();

@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class IotCredential extends Model
 {
-    
+
+
     public function user()
     {
         return $this->belongsTo(User::class);

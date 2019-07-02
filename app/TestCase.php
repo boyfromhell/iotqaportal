@@ -27,4 +27,9 @@ class TestCase extends Model
     {
         return $this->hasMany(TestCaseSummary::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -15,6 +15,7 @@ use Psy\Util\Json;
 
 class TestCaseLog extends Resource
 {
+
     /**
      * The model the resource corresponds to.
      *

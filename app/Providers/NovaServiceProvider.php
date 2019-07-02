@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\IoTAPIAuth;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
@@ -42,7 +43,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function gate()
     {
+
         Gate::define('viewNova', function ($user) {
+
+            $user->middleware(IoTAPIAuth::class);
             return in_array($user->email, [
                 'tharindarodrigo@gmail.com'
             ]);

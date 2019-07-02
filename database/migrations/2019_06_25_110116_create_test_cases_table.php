@@ -18,8 +18,10 @@ class CreateTestCasesTable extends Migration
             $table->string('name');
             $table->integer('device_id');
             $table->integer('loops');
-//            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

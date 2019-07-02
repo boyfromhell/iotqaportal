@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Http\Middleware\IoTAPIAuth;
+use App\Traits\IotAuth;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -10,19 +12,18 @@ use Illuminate\Support\Facades\Log;
 
 class Device extends Model
 {
+    use IotAuth;
 
     public $accessToken;
     public $jwt;
     public $user_id;
 
-    public function __construct($userId = null)
+    public function __construct()
     {
-        $userId = $userId == null ? Auth::id() : $userId;
-        $iotToken = IotToken::where('user_id', $userId)->first();
-//        Log::debug((string)$iotToken);
-        $this->accessToken = $iotToken->access_token;
-        $this->jwt = $iotToken->jwt_token;
-        $this->user_id = $iotToken->iot_user_id;
+        $x = $this->authenticate();
+        $this->accessToken = $x->access_token;
+        $this->jwt = $x->access_token;
+        $this->user_id = $x->iot_user_id;
     }
 
     public function deviceCategories()

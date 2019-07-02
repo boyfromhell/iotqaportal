@@ -1,28 +1,16 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Traits;
 
 use App\IotCredential;
 use App\IotToken;
-use App\User;
 use Carbon\Carbon;
-use Closure;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
-class IoTAPIAuth
-{
-    /**
-     * Handle an incoming request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
-     * @return mixed
-     */
+trait IotAuth {
 
-    public function handle($request, Closure $next)
+    public function authenticate($userId = null)
     {
-
         $tokens = IotCredential::getTokens();
 
 //        Log::debug($tokens['access_token']);
@@ -31,9 +19,9 @@ class IoTAPIAuth
 //        Log::debug($iotLogin['user_id']);
         $expiresAt = Carbon::now()->addSeconds($tokens['expires_in']);
 
-//        $user = User::find(Auth::id());
+        $user = $userId ?? Auth::id();
         $iotToken = IotToken::firstOrCreate(
-            ['user_id' => Auth::id()],
+            ['user_id' => $user],
             [
                 'access_token' => $tokens['access_token'],
                 'jwt_token' => $iotLogin['X-IoT-JWT'],
@@ -42,7 +30,7 @@ class IoTAPIAuth
             ]);
 
         if ($this->tokensAreValid($iotToken)) {
-            return $next($request);
+            return $iotToken;
         }
 
         $iotToken->access_token = $tokens['access_token'];
@@ -51,17 +39,8 @@ class IoTAPIAuth
         $iotToken->expires_at = $expiresAt;
 
         $iotToken->save();
-        return $next($request);
 
-//        session()->put('access_token', $tokens['access_token']);
-//        session()->put('jwt', $iotLogin['X-IoT-JWT']);
-//        session()->put('user_id', $iotLogin['data']['userId']);
-
-//        session()->put('expires_at', $expiresAt);
-
-
-//        session()->put('exp_time', $tokens['expiry_time']);
-
+        return $iotToken;
 
     }
 

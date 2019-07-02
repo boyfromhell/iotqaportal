@@ -19,6 +19,7 @@ trait IotAuth {
 //        Log::debug($iotLogin['user_id']);
         $expiresAt = Carbon::now()->addSeconds($tokens['expires_in']);
 
+//        dd($tokens);
         $user = $userId ?? Auth::id();
         $iotToken = IotToken::firstOrCreate(
             ['user_id' => $user],
@@ -28,6 +29,8 @@ trait IotAuth {
                 'iot_user_id' => $iotLogin['data']['userId'],
                 'expires_at' => $expiresAt
             ]);
+
+//        dd($iotToken);
 
         if ($this->tokensAreValid($iotToken)) {
             return $iotToken;

@@ -15,6 +15,7 @@ class DeviceController extends Controller
     {
         $device = new Device();
         $devices = $device->getDevices();
+//        dd($devices);
         return view('devices.index', compact('devices'));
     }
 

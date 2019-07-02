@@ -22,7 +22,7 @@ class Device extends Model
     {
         $x = $this->authenticate();
         $this->accessToken = $x->access_token;
-        $this->jwt = $x->access_token;
+        $this->jwt = $x->jwt;
         $this->user_id = $x->iot_user_id;
     }
 
@@ -40,6 +40,8 @@ class Device extends Model
     public function getDevices()
     {
 
+
+//        dd($this->accessToken, $this->jwt);
         $client = new Client();
         $res = $client->request('GET', 'https://iot.dialog.lk/developer/api/userdevicemgt/v1/devices', [
             'headers' => [

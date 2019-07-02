@@ -22,7 +22,7 @@ class Device extends Model
     {
         $x = $this->authenticate();
         $this->accessToken = $x->access_token;
-        $this->jwt = $x->jwt;
+        $this->jwt = $x->jwt_token;
         $this->user_id = $x->iot_user_id;
     }
 

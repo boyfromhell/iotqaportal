@@ -55,7 +55,7 @@ class TestCase extends Resource
                 ->options($device->getDeviceSelect())
                 ->displayUsingLabels(),
             Number::make('loops'),
-            BelongsTo::make('User')->searchable(),
+//            BelongsTo::make('User')->searchable(),
             HasMany::make('Sequences', 'sequences'),
             HasMany::make('Test Case Summaries', 'testCaseSummaries')
         ];

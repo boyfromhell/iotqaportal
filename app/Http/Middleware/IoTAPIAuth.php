@@ -24,9 +24,7 @@ class IoTAPIAuth
     {
 
         $tokens = IotCredential::getTokens();
-
 //        Log::debug($tokens['access_token']);
-
         $iotLogin = IotCredential::getXtoken($tokens['access_token']);
 //        Log::debug($iotLogin['user_id']);
         $expiresAt = Carbon::now()->addSeconds($tokens['expires_in']);

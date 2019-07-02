@@ -14,6 +14,10 @@ class TestCase extends Model
 
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime'
+    ];
+
     public function sequences()
     {
         return $this->hasMany(Sequence::class);

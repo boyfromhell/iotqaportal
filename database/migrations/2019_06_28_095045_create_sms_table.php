@@ -28,6 +28,7 @@ class CreateSmsTable extends Migration
             $table->integer('modem_fail')->nullable();
             $table->integer('gprs_fail')->nullable();
             $table->text('other')->nullable();
+
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@ trait IotAuth {
 
     public function authenticate($userId = null)
     {
-        $tokens = IotCredential::getTokens();
+        $tokens = IotCredential::getTokens($userId);
 
 //        Log::debug($tokens['access_token']);
 

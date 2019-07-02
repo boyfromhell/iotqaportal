@@ -15,9 +15,11 @@ class IotCredential extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function getTokens()
+    public static function getTokens($userId = null)
     {
-        $user = IotCredential::where('user_id', Auth::id())->first();
+
+        $userId = $userId ?? Auth::id();
+        $user = IotCredential::where('user_id', $userId)->first();
 
         $client = new Client();
         $res = $client->request('GET', 'https://iot.dialog.lk/developer/api/applicationmgt/authenticate', [

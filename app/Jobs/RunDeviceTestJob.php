@@ -56,7 +56,7 @@ class RunDeviceTestJob implements ShouldQueue
 
         Log::debug('Access Token: ' . session()->get('access_token'));
 
-        $device = new Device($this->userId);
+        $device = new Device($this->testCase->user_id);
         for ($x = 0; $x < $this->testCase->loops; $x++) {
             Log::debug('Loop: ' . $x);
             foreach ($actionSeries as $action) {
@@ -64,7 +64,7 @@ class RunDeviceTestJob implements ShouldQueue
                     $response = $device->executeTestAction((integer)$this->testCase->device_id, $action->action, json_decode($action->action_params));
                     Log::debug(collect($response));
 
-                    TestCaseLog::insert([
+                    TestCaseLog::create([
                         'action' => $action->action,
                         'test_case_summary_id' => $testCaseSummary->id,
                         'sequence_id' => $action->id,
@@ -76,7 +76,7 @@ class RunDeviceTestJob implements ShouldQueue
 
                 } catch (ClientException $e) {
                     Log::error($e->getCode() . ': ' . $e->getMessage());
-                    TestCaseLog::insert([
+                    TestCaseLog::create([
                         'action' => $action->action,
                         'sequence_id' => $action->id,
                         'http_response' => $e->getCode(),

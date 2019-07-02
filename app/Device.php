@@ -18,9 +18,9 @@ class Device extends Model
     public $jwt;
     public $user_id;
 
-    public function __construct()
+    public function __construct($user = null)
     {
-        $x = $this->authenticate();
+        $x = $this->authenticate($user);
         $this->accessToken = $x->access_token;
         $this->jwt = $x->jwt_token;
         $this->user_id = $x->iot_user_id;

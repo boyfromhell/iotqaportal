@@ -43,19 +43,19 @@ class Sms extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('serial_number'),
-            Text::make('imei'),
-            Text::make('event_name'),
-            Text::make('session_id'),
-            Text::make('sim_ccid'),
-            Text::make('network_operator'),
-            Text::make('signal_quality'),
-            Text::make('battery_voltage'),
-            Text::make('firmware_version'),
-            Text::make('modem_fail'),
-            Text::make('network_fail'),
-            Text::make('gprs_fail'),
-            Text::make('Created At', 'created_at')
+            Text::make('Serial Number'),
+            Text::make('Imei'),
+            Text::make('Event Name'),
+            Text::make('Session Id'),
+            Text::make('Sim Ccid'),
+            Text::make('Network Operator'),
+            Text::make('Signal Quality'),
+            Text::make('Battery Voltage'),
+            Text::make('Firmware Version'),
+            Text::make('Modem Fail'),
+            Text::make('Network Fail'),
+            Text::make('gprs fail'),
+            DateTime::make('Created At')
         ];
     }
 

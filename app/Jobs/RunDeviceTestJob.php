@@ -69,17 +69,16 @@ class RunDeviceTestJob implements ShouldQueue
                         'test_case_summary_id' => $testCaseSummary->id,
                         'sequence_id' => $action->id,
                         'response' => $response->getBody(),
-                        'wait_time' => $action->duration,
                         'status' => $response->getStatusCode(),
+                        'wait_time' => $action->duration,
                     ]);
-
 
                 } catch (ClientException $e) {
                     Log::error($e->getCode() . ': ' . $e->getMessage());
                     TestCaseLog::create([
                         'action' => $action->action,
-                        'sequence_id' => $action->id,
-                        'http_response' => $e->getCode(),
+                        'sequence_id' => $testCaseSummary->id,
+                        'response' => $e->getMessage(),
                         'wait_time' => $action->duration,
                         'status' => $e->getCode(),
                     ]);

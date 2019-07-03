@@ -5,9 +5,12 @@ namespace App\Nova;
 use KABBOUCHI\NovaImpersonate\Impersonate;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
+use Vyuldashev\NovaPermission\Permission;
+use Vyuldashev\NovaPermission\Role;
 
 class User extends Resource
 {
@@ -63,6 +66,9 @@ class User extends Resource
                 ->updateRules('nullable', 'string', 'min:8'),
 
             Impersonate::make($this),
+
+            MorphToMany::make('Roles', 'roles', Role::class),
+            MorphToMany::make('Permissions', 'permissions', Permission::class),
         ];
     }
 

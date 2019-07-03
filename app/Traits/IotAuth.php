@@ -11,18 +11,19 @@ trait IotAuth {
 
     public function authenticate($userId = null)
     {
+        $userId = !empty($userId) ? $userId : Auth::id();
+
         $tokens = IotCredential::getTokens($userId);
 
 //        Log::debug($tokens['access_token']);
 
-        $iotLogin = IotCredential::getXtoken($tokens['access_token']);
+        $iotLogin = IotCredential::getXtoken($tokens['access_token'], $userId);
 //        Log::debug($iotLogin['user_id']);
         $expiresAt = Carbon::now()->addSeconds($tokens['expires_in']);
 
 //        dd($tokens);
-        $user = $userId ?? Auth::id();
         $iotToken = IotToken::firstOrCreate(
-            ['user_id' => $user],
+            ['user_id' => $userId],
             [
                 'access_token' => $tokens['access_token'],
                 'jwt_token' => $iotLogin['X-IoT-JWT'],

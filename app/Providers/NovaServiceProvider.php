@@ -29,9 +29,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
     }
 
     /**
@@ -46,7 +46,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
         Gate::define('viewNova', function ($user) {
 
-            $user->middleware(IoTAPIAuth::class);
+//            $user->middleware(IoTAPIAuth::class);
             return in_array($user->email, [
                 'tharindarodrigo@gmail.com'
             ]);
@@ -75,7 +75,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new \PhpJunior\NovaLogViewer\Tool(),
             new \Spatie\TailTool\TailTool(),
-            new LaravelNovaCsvImport()
+            new LaravelNovaCsvImport(),
+            \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
         ];
     }
 

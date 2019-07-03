@@ -78,7 +78,7 @@ class RegisterController extends Controller
         $user->iotCredential()->create([
             'x_secret' => $data['x_secret'],
             'username' => $data['username'],
-            'password' => $data['password']
+            'password' => $data['iot_password']
         ]);
 
         return $user;

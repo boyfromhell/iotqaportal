@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\IotAuth;
 use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -20,10 +21,9 @@ class IotCredential extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function getTokens($userId = null)
+    public static function getTokens($userId)
     {
 
-        $userId = empty($userId) ? Auth::id() : $userId;
         $user = IotCredential::where('user_id', $userId)->first();
 
         $client = new Client();
@@ -38,10 +38,11 @@ class IotCredential extends Model
 //        echo $res->getHeader('content-type')[0];
     }
 
-    public static function getXtoken($accessToken)
+    public static function getXtoken($accessToken, $userId = null)
     {
-        $user = IotCredential::where('user_id', Auth::id())->first();
-//        dd($user->password);
+        $userId = empty($userId) ? Auth::id() : $userId;
+        $user = IotCredential::where('user_id', $userId)->first();//        dd($user);
+
         $client = new Client();
         $res = $client->post('https://iot.dialog.lk/developer/api/usermgt/v1/authenticate', [
             'headers' => [

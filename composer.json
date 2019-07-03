@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
+        "gregoriohc/laravel-nova-theme-responsive": "^0.6.2",
         "guzzlehttp/guzzle": "^6.3",
         "kabbouchi/nova-impersonate": "^1.0",
         "laravel/framework": "5.8.*",
@@ -20,7 +21,9 @@
         "maatwebsite/laravel-nova-excel": "^1.1",
         "php-junior/nova-logs": "^1.0",
         "simonhamp/laravel-nova-csv-import": "^0.1.1",
-        "spatie/nova-tail-tool": "^2.0"
+        "spatie/laravel-permission": "^2.37",
+        "spatie/nova-tail-tool": "^2.0",
+        "vyuldashev/nova-permission": "^1.8"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

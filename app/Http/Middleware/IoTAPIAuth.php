@@ -23,7 +23,7 @@ class IoTAPIAuth
     public function handle($request, Closure $next)
     {
 
-        $tokens = IotCredential::getTokens();
+        $tokens = IotCredential::getTokens($request->user()->id);
 //        Log::debug($tokens['access_token']);
         $iotLogin = IotCredential::getXtoken($tokens['access_token']);
 //        Log::debug($iotLogin['user_id']);

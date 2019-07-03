@@ -9,7 +9,6 @@ class TestCaseLog extends Model
     protected $fillable = [
         'action',
         'sequence_id',
-        'http_response',
         'wait_time',
         'status'    
     ];

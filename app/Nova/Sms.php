@@ -30,7 +30,7 @@ class Sms extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'serial_number'
+        'id', 'serial_number', 'imei', 'firmware_version'
     ];
 
     /**
@@ -48,11 +48,11 @@ class Sms extends Resource
             Text::make('Imei'),
             Text::make('Event Name'),
             Text::make('Session Id'),
-            Text::make('Sim Ccid'),
-            Text::make('Network Operator'),
+            Text::make('Sim Ccid')->onlyOnDetail(),
+            Text::make('Network Operator')->onlyOnDetail(),
             Text::make('Signal Quality'),
             Text::make('Battery Voltage'),
-            Text::make('Firmware Version'),
+            Text::make('Firmware Version')->onlyOnDetail(),
             Text::make('Modem Fail'),
             Text::make('Network Fail'),
             Text::make('GPRS Fail'),

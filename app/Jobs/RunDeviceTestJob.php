@@ -45,13 +45,19 @@ class RunDeviceTestJob implements ShouldQueue
     public function handle()
     {
 
-        $testCaseSummary = new TestCaseSummary();
+//        $testCaseSummary = new TestCaseSummary();
 
         $actionSeries = $this->testCase->sequences;
 
-        $testCaseSummary->comment = $this->comment;
-        $testCaseSummary->test_case_id = $this->testCase->id;
-        $testCaseSummary->save();
+        $testCaseSummary = TestCaseSummary::create([
+            'comment' => $this->comment,
+            'test_case_id' => $this->testCase->id
+        ]);
+
+
+//        $testCaseSummary->comment = $this->comment;
+//        $testCaseSummary->test_case_id = $this->testCase->id;
+//        $testCaseSummary->save();
 
 
         Log::debug('Access Token: ' . $testCaseSummary->id);

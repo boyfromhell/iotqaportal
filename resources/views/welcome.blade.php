@@ -81,9 +81,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <img src="{{asset('img/logo.png')}}" alt="" width="300px">
-                    <br>
-                    IoT QA PORTAL
+                    <img src="{{asset('img/logo.png')}}" alt="" width="300px" style="margin-top: 50px;">
+                    | IoT
                 </div>
 
 {{--                <div class="links">--}}

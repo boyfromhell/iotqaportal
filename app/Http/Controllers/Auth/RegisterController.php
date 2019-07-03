@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Rules\ValidateIotUser;
+use App\Rules\ValidateXToken;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use SebastianBergmann\CodeCoverage\Driver\Xdebug;
 
 class RegisterController extends Controller
 {
@@ -43,7 +46,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -52,9 +55,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'username' => ['required'],
-            'iot_password' => ['required'],
-            'x_secret' => ['required']
+            'x_secret' => ['required', new ValidateXToken],
+            'username' => ['required', 'email'],
+            'iot_password' => ['required', new ValidateIotUser($data['x_secret'], $data['username'], $data['iot_password'])],
         ]);
 
     }
@@ -62,15 +65,23 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user->iotCredential()->create([
+            'x_secret' => $data['x_secret'],
+            'username' => $data['username'],
+            'password' => $data['password']
+        ]);
+
+        return $user;
     }
 }

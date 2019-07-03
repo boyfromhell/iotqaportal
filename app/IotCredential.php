@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class IotCredential extends Model
 {
 
+    protected $fillable = [
+        'x_secret',
+        'username',
+        'password'
+    ];
 
     public function user()
     {
@@ -23,7 +28,7 @@ class IotCredential extends Model
 
         $client = new Client();
         $res = $client->request('GET', 'https://iot.dialog.lk/developer/api/applicationmgt/authenticate', [
-            'headers' => ['X-Secret' => $user->x_secret ]
+            'headers' => ['X-Secret' => $user->x_secret]
         ]);
         if ($res->getStatusCode() == 200) {
             return json_decode($res->getBody(), true);
@@ -40,7 +45,7 @@ class IotCredential extends Model
         $client = new Client();
         $res = $client->post('https://iot.dialog.lk/developer/api/usermgt/v1/authenticate', [
             'headers' => [
-                'Authorization' => 'Bearer '.$accessToken,
+                'Authorization' => 'Bearer ' . $accessToken,
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
             ],

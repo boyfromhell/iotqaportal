@@ -65,9 +65,9 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('X-Secret') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('x_secret') is-invalid @enderror" name="name" value="{{ old('x_secret') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('x_secret') is-invalid @enderror" name="x_secret" value="{{ old('x_secret') }}" required autocomplete="x_secret" autofocus>
 
-                                @error('name')
+                                @error('x_secret')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

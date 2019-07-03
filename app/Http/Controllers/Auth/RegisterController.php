@@ -59,7 +59,6 @@ class RegisterController extends Controller
             'username' => ['required', 'email'],
             'iot_password' => ['required', new ValidateIotUser($data['x_secret'], $data['username'], $data['iot_password'])],
         ]);
-
     }
 
     /**

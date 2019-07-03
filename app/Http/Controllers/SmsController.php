@@ -28,6 +28,7 @@ class SmsController extends Controller
         $sms->network_fail = empty($data[10]) ? null : $data[10];
         $sms->gprs_fail = empty($data[11]) ? null : $data[11];
         $sms->other = empty($data[12]) ? null : $data[12];
+        $sms->created_at = $request['inboundSMSMessageNotification']['inboundSMSMessage']['dateTime'];
 
         $sms->save();
 

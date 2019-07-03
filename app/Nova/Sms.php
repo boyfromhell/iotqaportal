@@ -43,6 +43,7 @@ class Sms extends Resource
     {
         return [
             ID::make()->sortable(),
+            DateTime::make('Created At'),
             Text::make('Serial Number'),
             Text::make('Imei'),
             Text::make('Event Name'),
@@ -54,8 +55,8 @@ class Sms extends Resource
             Text::make('Firmware Version'),
             Text::make('Modem Fail'),
             Text::make('Network Fail'),
-            Text::make('gprs fail'),
-            DateTime::make('Created At')
+            Text::make('GPRS Fail'),
+            Text::make('Other'),
         ];
     }
 

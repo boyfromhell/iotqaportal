@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use KABBOUCHI\NovaImpersonate\Impersonate;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\MorphToMany;
@@ -23,7 +24,7 @@ class User extends Resource
 
     /**
      * The single value that should be used to represent the resource when being displayed.
-     *
+     *a
      * @var string
      */
     public static $title = 'name';
@@ -66,6 +67,8 @@ class User extends Resource
                 ->updateRules('nullable', 'string', 'min:8'),
 
             Impersonate::make($this),
+
+            HasOne::make('Iot Credential', 'iotCredential'),
 
             MorphToMany::make('Roles', 'roles', Role::class),
             MorphToMany::make('Permissions', 'permissions', Permission::class),

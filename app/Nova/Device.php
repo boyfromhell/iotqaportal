@@ -6,6 +6,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -42,11 +43,13 @@ class Device extends Resource
      */
     public function fields(Request $request)
     {
+        $device = new \App\Device();
+
         return [
             ID::make()->sortable(),
             Text::make('Platform Device ID'),
+            Select::make('Device', 'platform_device_id')->options($device->getDeviceSelect()),
             BelongsToMany::make('Device Categories', 'deviceCategories'),
-            BelongsTo::make('Iot Credentials', 'iotCredentials')->nullable()
         ];
     }
 

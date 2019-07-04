@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('pw', function(){
+   return bcrypt('1234');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

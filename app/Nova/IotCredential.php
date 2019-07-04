@@ -94,4 +94,13 @@ class IotCredential extends Resource
     {
         return [];
     }
+
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        if ($request->user()->hasRole('Admin')) {
+            return $query;
+        }
+
+        return $query->where('user_id', $request->user()->id);
+    }
 }

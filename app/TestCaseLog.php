@@ -8,9 +8,11 @@ class TestCaseLog extends Model
 {
     protected $fillable = [
         'action',
+        'test_case_summary_id',
         'sequence_id',
-        'wait_time',
-        'status'    
+        'response',
+        'status',
+        'wait_time'
     ];
 
     public function testCaseSummary()

@@ -54,12 +54,6 @@ class RunDeviceTestJob implements ShouldQueue
             'test_case_id' => $this->testCase->id
         ]);
 
-
-//        $testCaseSummary->comment = $this->comment;
-//        $testCaseSummary->test_case_id = $this->testCase->id;
-//        $testCaseSummary->save();
-
-
         Log::debug('Access Token: ' . $testCaseSummary->id);
 
         $device = new Device($this->testCase->user_id);

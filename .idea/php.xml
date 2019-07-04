@@ -106,6 +106,7 @@
       <path value="$PROJECT_DIR$/vendor/gregoriohc/laravel-nova-theme-responsive" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
       <path value="$PROJECT_DIR$/vendor/vyuldashev/nova-permission" />
+      <path value="$PROJECT_DIR$/vendor/llaski/nova-server-metrics" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

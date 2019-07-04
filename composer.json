@@ -18,6 +18,7 @@
         "laravel/nova": "*",
         "laravel/telescope": "^2.0",
         "laravel/tinker": "^1.0",
+        "llaski/nova-server-metrics": "^0.0.6",
         "maatwebsite/laravel-nova-excel": "^1.1",
         "php-junior/nova-logs": "^1.0",
         "simonhamp/laravel-nova-csv-import": "^0.1.1",

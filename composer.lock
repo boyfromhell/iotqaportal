@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a358da8d4161294672cebe6a63936d1",
+    "content-hash": "0de06ce92de100caf0d0a292cf943177",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -1459,6 +1459,47 @@
                 "storage"
             ],
             "time": "2019-03-30T13:22:34+00:00"
+        },
+        {
+            "name": "llaski/nova-server-metrics",
+            "version": "0.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/llaski/nova-server-metrics.git",
+                "reference": "ee4797130303e903f2dd12f9612c7c0cf1051a52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/llaski/nova-server-metrics/zipball/ee4797130303e903f2dd12f9612c7c0cf1051a52",
+                "reference": "ee4797130303e903f2dd12f9612c7c0cf1051a52",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Llaski\\NovaServerMetrics\\CardServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Llaski\\NovaServerMetrics\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova card.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2018-09-20T16:08:17+00:00"
         },
         {
             "name": "maatwebsite/excel",

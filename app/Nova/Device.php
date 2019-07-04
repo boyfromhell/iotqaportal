@@ -47,7 +47,7 @@ class Device extends Resource
 
         return [
             ID::make()->sortable(),
-            Text::make('Platform Device ID'),
+//            Text::make('Platform Device ID'),
             Select::make('Device', 'platform_device_id')->options($device->getDeviceSelect()),
             BelongsToMany::make('Device Categories', 'deviceCategories'),
         ];

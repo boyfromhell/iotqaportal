@@ -77,6 +77,7 @@ return [
         BootTools::class,
         Authorize::class,
         \Vyuldashev\NovaPermission\ForgetCachedPermissions::class,
+        \App\Http\Middleware\IoTAPIAuth::class
     ],
 
     /*

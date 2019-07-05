@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\TrashedStatus;
 
 class Device extends Resource
 {
@@ -46,10 +47,13 @@ class Device extends Resource
         $device = new \App\Device();
 
         return [
-            ID::make()->sortable(),
+//            ID::make()->sortable(),
 //            Text::make('Platform Device ID'),
-            Select::make('Device', 'platform_device_id')->options($device->getDeviceSelect()),
-            BelongsToMany::make('Device Categories', 'deviceCategories'),
+//            Select::make('Device', 'platform_device_id')->options($device->getDeviceSelect()),
+//            BelongsToMany::make('Device Categories', 'deviceCategories'),
+
+        Text::make('ID'),
+
         ];
     }
 
@@ -96,4 +100,11 @@ class Device extends Resource
     {
         return [];
     }
+
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        $devices = \App\Device::getAll();
+        return $devices;
+    }
+
 }

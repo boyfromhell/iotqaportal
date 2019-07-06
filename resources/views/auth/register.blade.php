@@ -61,6 +61,13 @@
                             </div>
                         </div>
 
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4 offset-4">
+                                <h5>IoT Account Credentials</h5>
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('X-Secret') }}</label>
 
@@ -74,6 +81,8 @@
                                 @enderror
                             </div>
                         </div>
+
+
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>

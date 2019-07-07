@@ -76,7 +76,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             new \PhpJunior\NovaLogViewer\Tool(),
             new \Spatie\TailTool\TailTool(),
             new LaravelNovaCsvImport(),
-            \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
+            \Vyuldashev\NovaPermission\NovaPermissionTool::make()
+                ->canSee(function ($request) {
+                    return $request->user()->hasRole('Admin');
+                }),
         ];
     }
 

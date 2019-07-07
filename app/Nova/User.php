@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use KABBOUCHI\NovaImpersonate\Impersonate;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -60,6 +61,10 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
+
+            Impersonate::make($this)->canSee(function ($request) {
+                return $request->user()->hasRole('Admin');
+            }),
         ];
     }
 
@@ -105,5 +110,10 @@ class User extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    public function canImpersonate(Request $request)
+    {
+        return $request->user()->hasRole('Admin');
     }
 }
